@@ -12,7 +12,8 @@ package com.cristianvillamil.platziwallet.ui.transfer
     var bankWebPageUrl: String,
     var lastTransferDate: String
 ) {
-    class Builder(accountId: String) {
+     //inner class
+    class Builder(accountId: String) {//accountId parametro que no es opcional
         private var userName: String = ""
         private var profilePhotoUrl: String = ""
         private var bankName: String = ""
@@ -25,7 +26,7 @@ package com.cristianvillamil.platziwallet.ui.transfer
         private var lastTransferDate: String = ""
 
         init {
-            this.accountId = accountId
+            this.accountId = accountId//lo inicializamos
         }
 
         fun setUserName(newUserName: String): Builder = apply {

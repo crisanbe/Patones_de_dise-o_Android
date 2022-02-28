@@ -4,6 +4,7 @@ import com.cristianvillamil.platziwallet.UserSingleton
 import com.cristianvillamil.platziwallet.ui.home.FavoriteTransfer
 import com.cristianvillamil.platziwallet.ui.home.HomeContract
 import com.cristianvillamil.platziwallet.ui.home.data.HomeInteractor
+import com.cristianvillamil.platziwallet.ui.home.data.User
 
 class HomePresenter(private val view:HomeContract.View) : HomeContract.Presenter {
 
@@ -18,7 +19,10 @@ class HomePresenter(private val view:HomeContract.View) : HomeContract.Presenter
                 //Para traer nuestros valores (userName) hay que tener en cuenta cuales son los valores que hacen parte de nuestra funcion statica y de
                 //y nuestra clase UserSingleton
                 UserSingleton.getInstance().userName = "hola"
-
+                val user = User.Builder()
+                    .setUserName("hola")
+                    .setPassword("hfdfjdnfkjdf")
+                    .build()
                 view.hideLoader()
                 view.showFavoriteTransfers(favoriteList)
             }
