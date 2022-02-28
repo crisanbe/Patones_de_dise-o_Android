@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cristianvillamil.platziwallet.R
 import com.cristianvillamil.platziwallet.ui.home.FavoriteTransfer
 import com.cristianvillamil.platziwallet.ui.home.HomeContract
+import com.cristianvillamil.platziwallet.ui.home.data.MessageFactory
+import com.cristianvillamil.platziwallet.ui.home.data.MessageFactory.Companion.TYPE_ERROR
+import com.cristianvillamil.platziwallet.ui.home.data.MessageFactory.Companion.TYPE_SUCCESS
 import com.cristianvillamil.platziwallet.ui.home.presenter.HomePresenter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -62,7 +65,16 @@ class HomeFragment : Fragment(), HomeContract.View {
         homeLoader.visibility = View.GONE
     }
 
+    //ver los favoritos requerimos el mensage del MessageFactory
     override fun showFavoriteTransfers(favoriteTransfer: List<FavoriteTransfer>) {
         favoriteTransferAdapter.setData(favoriteTransfer)
+        val dialogFactory = MessageFactory()
+        // aplicamos la funcion scope de alcance let(dejar)
+        //y le desimos que dejar si el cotexto (it) puede ser null
+        context?.let {
+           val errorDialog = dialogFactory.getDialog(it, TYPE_SUCCESS)
+            //ver mensage
+            errorDialog.show()
+        }
     }
 }
