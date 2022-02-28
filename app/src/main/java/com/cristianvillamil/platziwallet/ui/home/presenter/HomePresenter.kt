@@ -13,6 +13,10 @@ class HomePresenter(private val view:HomeContract.View) : HomeContract.Presenter
         view.showLoader()
         homeInteractor.retrieveFavoriteTransferFromCache(object: HomeContract.OnResponseCallback{
             override fun onResponse(favoriteList: List<FavoriteTransfer>) {
+                //Gracias a nuestra funcion stica  companion object podemos llamarla nuestro getInstance()
+                //Aunque en nuestra clase UserSingleton las funciones sean publicas no las va traer y por ende utilizamos  (companion object)
+                //Para traer nuestros valores (userName) hay que tener en cuenta cuales son los valores que hacen parte de nuestra funcion statica y de
+                //y nuestra clase UserSingleton
                 UserSingleton.getInstance().userName = "hola"
 
                 view.hideLoader()
