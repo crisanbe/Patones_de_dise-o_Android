@@ -1,1 +1,1 @@
-# Patones_de_dise-o_Android
+# Patones de diseño en Android
