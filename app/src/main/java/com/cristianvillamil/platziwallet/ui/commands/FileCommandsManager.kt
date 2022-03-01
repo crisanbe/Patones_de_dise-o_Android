@@ -14,9 +14,9 @@ class FileCommandsManager {
 
     //para poder solicitar un commando, lo obtenemos por su nombre
     fun getCommand(commandName: String): FileCommand{
-        if (commands.containsKey(commandName)){//si commands contiene commandName
+        if (commands.containsKey(commandName)){//si commands contiene commandName o tiene la llave
             //commands.get(commandName)= otra accion
-            return commands[commandName]!! //para asegurarnos de que FileCommand no sea nul ponemos !!
+            return commands[commandName]!! //Sabemos que va existir la llave y para asegurarnos de que FileCommand no sea null ponemos !!
         }else{
             throw RuntimeException("command $commandName no esta registrado")
         }
